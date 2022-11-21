@@ -5,3 +5,5 @@ def OccurenceFinder(str1, str2):
         if i == last_letter:
             occurence += 1
     return occurence
+
+print(OccurenceFinder("going to go to goa", "go"))
