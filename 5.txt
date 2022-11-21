@@ -1,0 +1,37 @@
+What is a Web Crawler ?
+- A web crawler browses a specified set of resources on the internet in a systematic and automated manner.
+- It can collect text and documents by recursively fetching links.
+- Search engines are the best examples of applications that work on web crawling as a means of providing latest data.
+
+Product Requirements:
+- Web crawlers need to be extremely SCALABLE so that they can crawl the entire web to fetch millions of documents using parallelization.
+- Internet changes daily and old methods can quickly become obsolete, so it must be able to INCORPORATE NEW DOCUMENTS in future.
+- Browsing the internet is an art as there is a high chance of error occurence, web crawler must be able to HANDLE ERRORS.
+- AVOID BLACKLISTS by not hammering the same web servers repeatedly
+- Provide CONTROL to monitor and tweak the parameters such as crawl speed, sleep time and keywords
+
+Design Components:
+- Start URLs : List of urls to start with
+- URL Frontier: A container to store the URLs to browse
+- HTML Fetcher: Web page downloaded
+- DNS Resolver: IP address translator
+- Duplicate Detection: Remove duplicate content
+- Data Storage: Store the downloaded text / images / documents
+- Caching: fast temporary memory
+- URL Extractor: Get secondary URLs
+- URL Filter: Remove unneccesary content
+- URL Storage: Store the already visited URLs.
+
+Protocol
+- Send Start URLs to URL Frontier.
+- Frontier picks a URL according to its priorities and policies.
+- Call HTML Fetcher to fetch URLs from the URL Frontier.
+- Fetcher calls the DNS resolver to resolve web server's address.
+- HTML Parser parses HTML pages and analyses the content of the page.
+- Duplicate detection searches the memory.
+- If not a duplicate then this web page is sent to Link Extractor
+- The extracted URLs are passed to the URL Filter
+- After filteration link is checked for any previous visits and processing information
+- If not processed before, it is added to the URL Frontier.
+- URL Frontier allots them specific positions in its data structure according to priority rules.
+This keep repeating in cycles parallely and millions of pages are processed
